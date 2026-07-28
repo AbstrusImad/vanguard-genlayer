@@ -75,7 +75,7 @@ describe('BountyBoard', () => {
     expect(screen.getByText('Settled Bounty')).toBeInTheDocument();
 
     // Click the SETTLED filter
-    const settledFilter = screen.getByTestId('bounty-filter-status', { name: 'SETTLED' });
+    const settledFilter = screen.getByRole('button', { name: 'SETTLED' });
     fireEvent.click(settledFilter);
 
     expect(screen.queryByText('Open Bounty')).not.toBeInTheDocument();

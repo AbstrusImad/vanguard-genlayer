@@ -102,7 +102,7 @@ describe('BountyDetail', () => {
     });
 
     expect(screen.getByText('Create a Python REST API with FastAPI')).toBeInTheDocument();
-    expect(screen.getByText('Engineering')).toBeInTheDocument();
+    expect(screen.getByText('Category: Engineering')).toBeInTheDocument();
   });
 
   it('shows error state when fetch fails', async () => {

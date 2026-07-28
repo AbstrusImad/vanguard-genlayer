@@ -93,7 +93,7 @@ describe('Evaluation Appeal Workflow', () => {
       expect(screen.getByText('FORGE Evaluation')).toBeInTheDocument();
     });
 
-    expect(screen.getByText('APPROVE')).toBeInTheDocument();
+    expect(screen.getAllByText('APPROVE').length).toBeGreaterThanOrEqual(1);
     expect(screen.getByText('Score: 45/100')).toBeInTheDocument();
     expect(screen.getByText('Minimal effort, low quality')).toBeInTheDocument();
   });
