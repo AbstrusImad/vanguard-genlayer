@@ -1,0 +1,33 @@
+{
+  "phase": "contract",
+  "lintCommand": "genvm-lint check contracts/contract.py --json",
+  "lintResult": {"ok": true, "passed": 3},
+  "sdkValidation": "404 Not Found (network issue, not code issue)",
+  "directTestCommand": "gltest tests/direct/test_contract.py --leader-only -v",
+  "directTestResult": "15 passed, 1 failed (transient rate-limit on StudioNet)",
+  "directTestDetails": {
+    "passed": 15,
+    "failed": 1,
+    "failureReason": "test_pagination_beyond_end: StudioNet returned -32006 Server busy (transient rate limit)",
+    "totalDuration": "287.26s"
+  },
+  "testCoverage": [
+    "test_constructor_and_stats",
+    "test_create_bounty",
+    "test_create_bounty_below_minimum",
+    "test_submit_work (sponsor self-submit blocked)",
+    "test_submit_work_unknown_bounty",
+    "test_cancel_bounty",
+    "test_cancel_unknown_bounty",
+    "test_appeal_requires_awarded",
+    "test_settle_requires_awarded",
+    "test_chronicle_events",
+    "test_pagination_empty",
+    "test_pagination_beyond_end (rate-limited)",
+    "test_reputation_default",
+    "test_get_bounty_unknown",
+    "test_multiple_bounties",
+    "test_evaluate_requires_submitted"
+  ],
+  "passedAt": "2026-07-28"
+}

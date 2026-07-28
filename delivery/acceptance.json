@@ -1,0 +1,368 @@
+{
+  "schemaVersion": 1,
+  "mode": "full",
+  "product": {
+    "name": "Vanguard",
+    "domain": "work-marketplace",
+    "primaryOutcome": "Sponsors fund bounties, hunters submit work, AI consensus evaluates quality and releases GEN payment"
+  },
+  "roles": [
+    { "id": "sponsor", "label": "Sponsor" },
+    { "id": "hunter", "label": "Hunter" },
+    { "id": "observer", "label": "Observer" }
+  ],
+  "entities": [
+    { "id": "bounty", "contractCollection": "bounties" },
+    { "id": "submission", "contractCollection": "submissions" },
+    { "id": "evaluation", "contractCollection": "evaluations" },
+    { "id": "reputation", "contractCollection": "reputation" }
+  ],
+  "lifecycleStates": [
+    { "id": "draft", "entity": "bounty", "transitions": ["open"] },
+    { "id": "open", "entity": "bounty", "transitions": ["submitted", "cancelled"] },
+    { "id": "submitted", "entity": "bounty", "transitions": ["evaluating", "open"] },
+    { "id": "evaluating", "entity": "bounty", "transitions": ["awarded", "open", "disputed"] },
+    { "id": "awarded", "entity": "bounty", "transitions": ["settled", "disputed"] },
+    { "id": "disputed", "entity": "bounty", "transitions": ["evaluating", "cancelled"] },
+    { "id": "settled", "entity": "bounty", "transitions": [] },
+    { "id": "cancelled", "entity": "bounty", "transitions": [] }
+  ],
+  "contractMethods": [
+    {
+      "name": "create_bounty",
+      "kind": "write",
+      "payable": true,
+      "source": "contracts/contract.py",
+      "test": "tests/direct/test_contract.py",
+      "status": "implemented"
+    },
+    {
+      "name": "submit_work",
+      "kind": "write",
+      "source": "contracts/contract.py",
+      "test": "tests/direct/test_contract.py",
+      "status": "implemented"
+    },
+    {
+      "name": "evaluate_submission",
+      "kind": "write",
+      "source": "contracts/contract.py",
+      "test": "tests/integration/test_evaluate.py",
+      "status": "implemented"
+    },
+    {
+      "name": "cancel_bounty",
+      "kind": "write",
+      "source": "contracts/contract.py",
+      "test": "tests/direct/test_contract.py",
+      "status": "implemented"
+    },
+    {
+      "name": "appeal_evaluation",
+      "kind": "write",
+      "source": "contracts/contract.py",
+      "test": "tests/direct/test_contract.py",
+      "status": "implemented"
+    },
+    {
+      "name": "settle_bounty",
+      "kind": "write",
+      "source": "contracts/contract.py",
+      "test": "tests/direct/test_contract.py",
+      "status": "implemented"
+    },
+    {
+      "name": "get_bounties",
+      "kind": "view",
+      "source": "contracts/contract.py",
+      "test": "tests/direct/test_contract.py",
+      "status": "implemented"
+    },
+    {
+      "name": "get_bounty",
+      "kind": "view",
+      "source": "contracts/contract.py",
+      "test": "tests/direct/test_contract.py",
+      "status": "implemented"
+    },
+    {
+      "name": "get_submissions",
+      "kind": "view",
+      "source": "contracts/contract.py",
+      "test": "tests/direct/test_contract.py",
+      "status": "implemented"
+    },
+    {
+      "name": "get_reputation",
+      "kind": "view",
+      "source": "contracts/contract.py",
+      "test": "tests/direct/test_contract.py",
+      "status": "implemented"
+    },
+    {
+      "name": "get_stats",
+      "kind": "view",
+      "source": "contracts/contract.py",
+      "test": "tests/direct/test_contract.py",
+      "status": "implemented"
+    },
+    {
+      "name": "get_chronicle",
+      "kind": "view",
+      "source": "contracts/contract.py",
+      "test": "tests/direct/test_contract.py",
+      "status": "implemented"
+    }
+  ],
+  "screens": [
+    {
+      "id": "bounty-board",
+      "label": "Bounty Board",
+      "source": "frontend/src/components/screens/BountyBoard.tsx",
+      "states": ["loading", "empty", "ready", "error"],
+      "status": "implemented"
+    },
+    {
+      "id": "bounty-detail",
+      "label": "Bounty Detail",
+      "source": "frontend/src/components/screens/BountyDetail.tsx",
+      "states": ["loading", "empty", "ready", "error"],
+      "status": "implemented"
+    },
+    {
+      "id": "create-bounty",
+      "label": "Post Bounty",
+      "source": "frontend/src/components/screens/CreateBounty.tsx",
+      "states": ["loading", "empty", "ready", "submitting", "success", "error"],
+      "status": "implemented"
+    },
+    {
+      "id": "submit-work",
+      "label": "Submit Work",
+      "source": "frontend/src/components/screens/SubmitWork.tsx",
+      "states": ["loading", "empty", "ready", "submitting", "success", "error"],
+      "status": "implemented"
+    },
+    {
+      "id": "reputation-ledger",
+      "label": "Reputation",
+      "source": "frontend/src/components/screens/ReputationLedger.tsx",
+      "states": ["loading", "empty", "ready", "error"],
+      "status": "implemented"
+    },
+    {
+      "id": "chronicle",
+      "label": "Chronicle",
+      "source": "frontend/src/components/screens/Chronicle.tsx",
+      "states": ["loading", "empty", "ready", "error"],
+      "status": "implemented"
+    }
+  ],
+  "navigation": [
+    {
+      "controlId": "nav-bounties",
+      "label": "Bounties",
+      "targetScreen": "bounty-board",
+      "source": "frontend/src/components/Sidebar.tsx",
+      "test": "frontend/src/components/Sidebar.test.tsx",
+      "status": "implemented"
+    },
+    {
+      "controlId": "nav-create",
+      "label": "Post Bounty",
+      "targetScreen": "create-bounty",
+      "source": "frontend/src/components/Sidebar.tsx",
+      "test": "frontend/src/components/Sidebar.test.tsx",
+      "status": "implemented"
+    },
+    {
+      "controlId": "nav-reputation",
+      "label": "Reputation",
+      "targetScreen": "reputation-ledger",
+      "source": "frontend/src/components/Sidebar.tsx",
+      "test": "frontend/src/components/Sidebar.test.tsx",
+      "status": "implemented"
+    },
+    {
+      "controlId": "nav-chronicle",
+      "label": "Chronicle",
+      "targetScreen": "chronicle",
+      "source": "frontend/src/components/Sidebar.tsx",
+      "test": "frontend/src/components/Sidebar.test.tsx",
+      "status": "implemented"
+    }
+  ],
+  "controls": [
+    {
+      "id": "bounty-create",
+      "label": "Post bounty",
+      "kind": "contract-write",
+      "screen": "create-bounty",
+      "source": "frontend/src/components/screens/CreateBounty.tsx",
+      "handler": "handleCreateBounty",
+      "contractMethod": "create_bounty",
+      "test": "frontend/src/components/screens/CreateBounty.test.tsx",
+      "status": "implemented"
+    },
+    {
+      "id": "bounty-submit-work",
+      "label": "Submit work",
+      "kind": "contract-write",
+      "screen": "bounty-detail",
+      "source": "frontend/src/components/screens/BountyDetail.tsx",
+      "handler": "handleSubmitWork",
+      "contractMethod": "submit_work",
+      "test": "frontend/src/components/screens/BountyDetail.test.tsx",
+      "status": "implemented"
+    },
+    {
+      "id": "bounty-evaluate",
+      "label": "Evaluate submission",
+      "kind": "contract-write",
+      "screen": "bounty-detail",
+      "source": "frontend/src/components/screens/BountyDetail.tsx",
+      "handler": "handleEvaluate",
+      "contractMethod": "evaluate_submission",
+      "test": "frontend/src/components/screens/BountyDetail.test.tsx",
+      "status": "implemented"
+    },
+    {
+      "id": "bounty-cancel",
+      "label": "Cancel bounty",
+      "kind": "contract-write",
+      "screen": "bounty-detail",
+      "source": "frontend/src/components/screens/BountyDetail.tsx",
+      "handler": "handleCancel",
+      "contractMethod": "cancel_bounty",
+      "test": "frontend/src/components/screens/BountyDetail.test.tsx",
+      "status": "implemented"
+    },
+    {
+      "id": "bounty-appeal",
+      "label": "Appeal evaluation",
+      "kind": "contract-write",
+      "screen": "bounty-detail",
+      "source": "frontend/src/components/screens/BountyDetail.tsx",
+      "handler": "handleAppeal",
+      "contractMethod": "appeal_evaluation",
+      "test": "frontend/src/components/screens/BountyDetail.test.tsx",
+      "status": "implemented"
+    },
+    {
+      "id": "bounty-settle",
+      "label": "Settle bounty",
+      "kind": "contract-write",
+      "screen": "bounty-detail",
+      "source": "frontend/src/components/screens/BountyDetail.tsx",
+      "handler": "handleSettle",
+      "contractMethod": "settle_bounty",
+      "test": "frontend/src/components/screens/BountyDetail.test.tsx",
+      "status": "implemented"
+    },
+    {
+      "id": "bounty-view-detail",
+      "label": "View bounty",
+      "kind": "navigation",
+      "screen": "bounty-board",
+      "source": "frontend/src/components/screens/BountyBoard.tsx",
+      "handler": "handleViewDetail",
+      "test": "frontend/src/components/screens/BountyBoard.test.tsx",
+      "status": "implemented"
+    },
+    {
+      "id": "bounty-filter-status",
+      "label": "Filter by status",
+      "kind": "local-action",
+      "screen": "bounty-board",
+      "source": "frontend/src/components/screens/BountyBoard.tsx",
+      "handler": "handleFilterStatus",
+      "test": "frontend/src/components/screens/BountyBoard.test.tsx",
+      "status": "implemented"
+    },
+    {
+      "id": "reputation-lookup",
+      "label": "Look up reputation",
+      "kind": "contract-read",
+      "screen": "reputation-ledger",
+      "source": "frontend/src/components/screens/ReputationLedger.tsx",
+      "handler": "handleLookup",
+      "contractMethod": "get_reputation",
+      "test": "frontend/src/components/screens/ReputationLedger.test.tsx",
+      "status": "implemented"
+    }
+  ],
+  "workflows": [
+    {
+      "id": "bounty-lifecycle",
+      "label": "Create, submit, evaluate, and settle a bounty",
+      "steps": ["bounty-create", "bounty-submit-work", "bounty-evaluate", "bounty-settle"],
+      "test": "frontend/src/workflows/bounty-lifecycle.test.tsx",
+      "status": "implemented"
+    },
+    {
+      "id": "bounty-cancel-flow",
+      "label": "Create and cancel an unfilled bounty",
+      "steps": ["bounty-create", "bounty-cancel"],
+      "test": "frontend/src/workflows/bounty-cancel.test.tsx",
+      "status": "implemented"
+    },
+    {
+      "id": "evaluation-appeal",
+      "label": "Appeal a rejected evaluation and re-evaluate",
+      "steps": ["bounty-create", "bounty-submit-work", "bounty-evaluate", "bounty-appeal", "bounty-evaluate"],
+      "test": "frontend/src/workflows/evaluation-appeal.test.tsx",
+      "status": "implemented"
+    }
+  ],
+  "visuals": {
+    "direction": "Dark cargo terminal with warm amber accents",
+    "icons": [
+      { "id": "icon-bounty", "source": "lucide-react", "purpose": "Bounty listing marker", "context": "BountyBoard rows and BountyDetail header" },
+      { "id": "icon-submit", "source": "lucide-react", "purpose": "Submission action", "context": "SubmitWork form and BountyDetail submit button" },
+      { "id": "icon-evaluate", "source": "lucide-react", "purpose": "AI evaluation indicator", "context": "BountyDetail evaluation panel" },
+      { "id": "icon-reputation", "source": "lucide-react", "purpose": "Reputation score marker", "context": "ReputationLedger entries and user chips" },
+      { "id": "icon-chronicle", "source": "lucide-react", "purpose": "Event log entry", "context": "Chronicle timeline entries" },
+      { "id": "icon-wallet", "source": "lucide-react", "purpose": "Wallet connection status", "context": "Header wallet chip" },
+      { "id": "icon-filter", "source": "lucide-react", "purpose": "Status filter control", "context": "BountyBoard filter bar" },
+      { "id": "icon-scan", "source": "lucide-react", "purpose": "Scanning/evaluating state", "context": "Transaction lifecycle during AI consensus" }
+    ],
+    "diagrams": [
+      {
+        "id": "lifecycle-diagram",
+        "source": "frontend/src/components/Diagrams.tsx",
+        "purpose": "Show bounty lifecycle state transitions",
+        "dataInputs": ["bounty.status", "bounty.submission_count"],
+        "emptyBehavior": "Show empty lifecycle with all states greyed out",
+        "responsiveBehavior": "Collapse to vertical flow on mobile"
+      }
+    ],
+    "motion": [
+      {
+        "id": "scan-sweep",
+        "source": "frontend/src/app/globals.css",
+        "purpose": "Indicate AI evaluation in progress",
+        "trigger": "evaluate_submission transaction pending",
+        "reducedMotionBehavior": "Replace with static amber pulse indicator"
+      },
+      {
+        "id": "panel-enter",
+        "source": "framer-motion",
+        "purpose": "Smooth panel transitions on navigation",
+        "trigger": "Screen change",
+        "reducedMotionBehavior": "Instant swap without animation"
+      }
+    ],
+    "responsive": {
+      "breakpoints": ["360px", "768px", "1024px", "1440px"],
+      "reducedMotionSource": "prefers-reduced-motion media query"
+    }
+  },
+  "deployment": {
+    "network": "testnet-bradbury",
+    "contractAddress": "0x96ad011A8a988AA2Ab4cDC61D683B0A76b7d03bc",
+    "deployTx": "0xd8a0da8980f1cebcbd832a3e1c7eadb150051aa11293802bd44dc44e14197692",
+    "verifiedRead": "blocked: Bradbury RPC returns contract not found",
+    "verifiedWrites": [],
+    "liveUrl": ""
+  }
+}

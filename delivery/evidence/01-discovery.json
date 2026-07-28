@@ -1,0 +1,38 @@
+{
+  "discoveredAt": "2026-07-28",
+  "concept": "Decentralized work bounty platform where sponsors fund tasks with GEN, hunters submit solutions, and AI consensus evaluates quality to release payment and build reputation",
+  "domain": "Work marketplace and reputation tracking",
+  "mode": "full",
+  "network": "StudioNet",
+  "account": "0 (0x95803126315A05E642D8E46CE1d77eA2199a2A6E)",
+  "githubUser": "AbstrusImad",
+  "repository": "https://github.com/AbstrusImad/vanguard-genlayer",
+  "deploymentConstraints": [
+    "StudioNet (chain 61999) is gasless and accepts native value locks from zero-balance accounts",
+    "Payable methods require @gl.public.write.payable decorator",
+    "Use emit_transfer for GEN payments on finalized state",
+    "Quick wallet (genlayer-js createAccount) is the primary signing path; MetaMask unreliable on StudioNet"
+  ],
+  "uniquenessCheck": {
+    "priorProjects": ["Contest", "Gauntlet", "Versus", "Depositum", "Tessera", "Regula"],
+    "priorDomains": ["Debate", "Fact-checking", "Prompt engineering", "Rental deposits", "Product governance", "RegTech compliance"],
+    "priorVisualDirections": ["Editorial magazine", "Blueprint schematic", "Brutalist poster", "Swiss grid light", "Museum archive workstation", "Industrial mint command center"],
+    "priorMechanisms": ["Argument adjudication", "Claim verification", "Prompt competition", "Deposit arbitration", "Launch readiness review", "Compliance certification"],
+    "distinctDomain": "Work marketplace with value transfer and reputation",
+    "distinctVisualDirection": "Dark cargo terminal",
+    "distinctMechanism": "Bounty posting with GEN escrow, AI quality evaluation of submissions, automated payment release, hunter reputation tracking"
+  },
+  "artDirection": "Dark cargo terminal",
+  "palette": {
+    "background": "#0c0c10",
+    "accent": "#e09f3e",
+    "notes": "Deep charcoal with warm amber accent, muted bone text, dark slate panels"
+  },
+  "fonts": {
+    "display": "Syne",
+    "body": "Nunito Sans",
+    "mono": "Fira Code"
+  },
+  "gatePassed": true,
+  "gateNotes": "Concept is distinct in domain (work marketplace vs debate/compliance/review), visual direction (dark cargo terminal vs all prior), and mechanism (value transfer bounties vs all prior)"
+}

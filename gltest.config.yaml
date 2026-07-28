@@ -1,0 +1,10 @@
+environment: ../.env
+
+paths:
+  contracts: contracts/
+
+networks:
+  default: studionet
+  studionet:
+    accounts:
+      - "${GENLAYER_PRIVATE_KEY_0}"

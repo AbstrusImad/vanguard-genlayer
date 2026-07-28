@@ -1,0 +1,7 @@
+{
+  "phase": "product-spec",
+  "gateCommand": "node verify-delivery.mjs vanguard --phase product-spec",
+  "exitCode": 0,
+  "result": "ok: true",
+  "passedAt": "2026-07-28"
+}

@@ -1,0 +1,14 @@
+{
+  "phase": "contract-verification",
+  "network": "testnet-bradbury",
+  "contractAddress": "0x96ad011A8a988AA2Ab4cDC61D683B0A76b7d03bc",
+  "deployTx": "0xd8a0da8980f1cebcbd832a3e1c7eadb150051aa11293802bd44dc44e14197692",
+  "deployStatus": "ACCEPTED",
+  "deployExecutionResult": "FINISHED_WITH_RETURN",
+  "verifiedRead": false,
+  "verifiedReadError": "Bradbury RPC returns 'contract not found at address' — same pattern as Tessera and Regula. Deploy receipt confirms ACCEPTED/FINISHED_WITH_RETURN.",
+  "verifiedWrites": [],
+  "status": "blocked",
+  "reason": "Bradbury read RPC cannot find deployed contract. This is a known Bradbury indexer issue, not a contract code issue. User accepted Bradbury limitations.",
+  "passedAt": "2026-07-28"
+}
