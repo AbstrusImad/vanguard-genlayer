@@ -363,6 +363,6 @@
     "deployTx": "0xd8a0da8980f1cebcbd832a3e1c7eadb150051aa11293802bd44dc44e14197692",
     "verifiedRead": "blocked: Bradbury RPC returns contract not found",
     "verifiedWrites": [],
-    "liveUrl": ""
+    "liveUrl": "https://abstrusimad.github.io/vanguard-genlayer/"
   }
 }

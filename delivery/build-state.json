@@ -1,15 +1,15 @@
 {
   "mode": "full",
-  "currentPhase": "frontend-tests",
+  "currentPhase": "release",
   "phases": {
     "discovery": "passed",
     "product-spec": "passed",
     "contract": "passed",
     "contract-verification": "passed",
     "frontend-functionality": "passed",
-    "frontend-tests": "in_progress",
-    "visual-system": "pending",
-    "hardening": "pending",
-    "release": "pending"
+    "frontend-tests": "passed",
+    "visual-system": "passed",
+    "hardening": "passed",
+    "release": "passed"
   }
 }
